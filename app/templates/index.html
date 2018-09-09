@@ -2,28 +2,70 @@
 {% import 'bootstrap/wtf.html' as wtf %}
 
 {% block app_content %}
-    <h1>{{ _('Hi, %(username)s!', username=current_user.username) }}</h1>
-    <h1 class='test_carto' style="color:#F76C6C;">{{ 'Leâ sô taûn vaên' }}</h1>
-    <button class="ui teal button">Teal</button>
-    {% if form %}
-    {{ wtf.quick_form(form) }}
-    <br>
-    {% endif %}
-    {% for post in posts %}
-        {% include '_post.html' %}
-    {% endfor %}
-    <nav aria-label="...">
-        <ul class="pager">
-            <li class="previous{% if not prev_url %} disabled{% endif %}">
-                <a href="{{ prev_url or '#' }}">
-                    <span aria-hidden="true">&larr;</span> {{ _('Newer posts') }}
-                </a>
-            </li>
-            <li class="next{% if not next_url %} disabled{% endif %}">
-                <a href="{{ next_url or '#' }}">
-                    {{ _('Older posts') }} <span aria-hidden="true">&rarr;</span>
-                </a>
-            </li>
-        </ul>
-    </nav>
+<div class="ui vertical masthead center aligned segment">
+    <div class="ui container">
+        <div class="ui fixed large main menu" style="display: flex !important;">
+            <div class="ui container">
+                <div class="right item">
+                    {% if current_user.is_anonymous %}
+                    <a href="{{ url_for('auth.login') }}" class="ui inverted blue button">{{ _('Đăng nhập') }}</a>
+                    {% else %}
+
+                    <a href="{{ url_for('main.explore') }}" class="ui inverted purple button">{{ _('Cập nhật') }}</a>
+                    <a href="{{ url_for('main.user', username=current_user.username) }}" class="ui inverted green button">{{ _('Trang
+                            cá
+                            nhân') }}</a>
+                    <a href="{{ url_for('auth.logout') }}" class="ui inverted red button">{{ _('Đăng xuất') }}</a>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="ui container">
+        <h1 class='ui header test_carto' style="color:#F76C6C;">{{ _('Leâ sô taûn vaên') }}</h1>
+    </div>
+
+</div>
+
+<div class="ui vertical stripe mastmenu four stackable cards" style="border: none;">
+    <div class="ui fluid card">
+        <div class="content">
+            <a class="header">{{ _('Tản văn') }}</a>
+            <div class="description">
+                <p>Những tập truyện hay câu chuyện về thời Lê sơ</p>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="ui fluid card">
+        <div class="content">
+            <a class="header">{{ _('Dòng thời gian') }}</a>
+            <div class="description">
+                <p>Dòng thời gian triều Lê sơ</p>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="ui fluid card">
+        <div class="content">
+            <a class="header">{{ _('Triều đình Lê sơ') }}</a>
+            <div class="description">
+                <p>Thông tin về triều đình thời Lê sơ</p>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="ui fluid card">
+        <div class="content">
+            <a class="header">{{ _('Nhân vật tiêu biểu') }}</a>
+            <div class="description">
+                <p>Các nhân vật tiêu biểu thời Lê sơ</p>
+            </div>
+        </div>
+
+    </div>
+</div>
 {% endblock %}

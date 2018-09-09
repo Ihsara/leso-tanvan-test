@@ -2,11 +2,56 @@
 	font-family: 'ThuPhap1';
 	src: url('../../font/thuphap-long.TTF');
     }
-.body {
+body {
     font-size: 100%;
+    background-color:#A8D0E6;
+    color: white;
 }
-.test_carto {
-    margin-top: 15rem;
+
+.ui.vertical.stripe {
+    padding: 1em 0em;
+}
+
+.ui.fluid.card {
+    background-color: #374785;
+}
+
+.ui.fluid.card .content a.header{
+    font-size: 3em !important;
+    color:  #F8E9A1;
+    text-align: center;
+}
+
+.ui.fluid.card .content a:hover{
+    color: #F76C6C;
+}
+
+.ui.fluid.card .content .description {
+    font-size: 2em;
+    text-align: center;
+    color: white;
+    padding: 1em 1em 1em 1em;
+}
+
+/* h1:first-child{
+    margin-top: 3em;
+} */
+
+.masthead .ui.container .main.menu{
+    background:#A8D0E6;
+}
+
+.masthead .ui.container h1.ui.header {
+    margin-top: 3em;
     font-family: "ThuPhap1";
-    font-size: 12em;
+    font-size: 10em;
 }
+
+.mastmenu{
+    margin-bottom: 1em;
+}
+
+/* .test_carto {
+    font-family: "ThuPhap1";
+    font-size: 10em;
+} */
