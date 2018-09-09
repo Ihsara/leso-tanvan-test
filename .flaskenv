@@ -1,4 +1,4 @@
-FLASK_APP=leso.py
+FLASK_APP=microblog.py
 FLASK_ENV=development
 MAIL_SERVER=smtp.googlemail.com
 MAIL_PORT=587

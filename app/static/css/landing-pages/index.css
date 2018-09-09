@@ -1,0 +1,12 @@
+@font-face {
+	font-family: 'ThuPhap1';
+	src: url('../../font/thuphap-long.TTF');
+    }
+.body {
+    font-size: 100%;
+}
+.test_carto {
+    margin-top: 15rem;
+    font-family: "ThuPhap1";
+    font-size: 12em;
+}

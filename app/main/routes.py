@@ -44,7 +44,7 @@ def index():
         if posts.has_prev else None
     return render_template('index.html', title=_('Home'), form=form,
                            posts=posts.items, next_url=next_url,
-                           prev_url=prev_url)
+                           prev_url=prev_url, link_css='/static/css/landing-pages/index.css')
 
 
 @bp.route('/explore')

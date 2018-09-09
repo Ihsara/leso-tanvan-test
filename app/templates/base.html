@@ -1,70 +1,143 @@
+<!DOCTYPE html>
 {% extends 'bootstrap/base.html' %}
 
 {% block title %}
-    {% if title %}{{ title }} - Microblog{% else %}{{ _('Welcome to Microblog') }}{% endif %}
+    {% if title %}{{ title }} - Lê sơ tản văn{% else %}Lê sơ tản văn{% endif %}
 {% endblock %}
 
-{% block navbar %}
-    <nav class="navbar navbar-default">
-        <div class="container">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                <a class="navbar-brand" href="{{ url_for('main.index') }}">Microblog</a>
-            </div>
-            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                <ul class="nav navbar-nav">
-                    <li><a href="{{ url_for('main.index') }}">{{ _('Home') }}</a></li>
-                    <li><a href="{{ url_for('main.explore') }}">{{ _('Explore') }}</a></li>
-                </ul>
-                {% if g.search_form %}
-                <form class="navbar-form navbar-left" method="get" action="{{ url_for('main.search') }}">
-                    <div class="form-group">
-                        {{ g.search_form.q(size=20, class='form-control', placeholder=g.search_form.q.label.text) }}
-                    </div>
-                </form>
-                {% endif %}
-                <ul class="nav navbar-nav navbar-right">
-                    {% if current_user.is_anonymous %}
-                    <li><a href="{{ url_for('auth.login') }}">{{ _('Login') }}</a></li>
-                    {% else %}
-                    <li>
-                        <a href="{{ url_for('main.messages') }}">{{ _('Messages') }}
-                            {% set new_messages = current_user.new_messages() %}
-                            <span id="message_count" class="badge"
-                                  style="visibility: {% if new_messages %}visible
-                                                     {% else %}hidden{% endif %};">
-                                {{ new_messages }}
-                            </span>
-                        </a>
-                    </li>
-                    <li><a href="{{ url_for('main.user', username=current_user.username) }}">{{ _('Profile') }}</a></li>
-                    <li><a href="{{ url_for('auth.logout') }}">{{ _('Logout') }}</a></li>
-                    {% endif %}
-                </ul>
-            </div>
-        </div>
-    </nav>
+{% block head %}
+{{super()}}
+<meta charset="UTF-8">
+<meta name="author" content="Đồng tác giả bởi Trần Thị Kim Trang và Trần Long Châu">
+<meta name="keywords" content="history, Vietnam, Lê, lịch sử, Việt Nam">
+<meta name="description" content="Nơi lưu lại những án tản văn về thời Lê sơ">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel='shortcut icon' type='image/x-icon' href='/static/photo/favicon.ico' />
+{% endblock %}
+
+{% block styles %}
+{{super()}}
+<link rel="stylesheet"
+      href="/static/semantic/dist/semantic.min.css">
+<!-- <link href="static/dist/summernote-lite.css"
+      rel="stylesheet"> -->
+<!-- <link href="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.9/summernote-lite.css" rel="stylesheet"> -->
+<link href="https://cdn.quilljs.com/1.3.6/quill.snow.css" rel="stylesheet">
+
+ {% if link_css %}
+    <link rel="stylesheet" href={{ link_css }}> {% endif %}
+
+{% endblock %}
+
+{% block scripts %}
+{{ super() }}
+{{ moment.include_moment() }}
+<script src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
+crossorigin="anonymous"></script>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+<!-- <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script> -->
+<!-- <script src="/static/dist/summernote-lite.js"></script> -->
+<!-- <script src="/static/dist/lang/summernote-vi-VN.js"></script> -->
+<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.9/summernote-lite.js"></script> -->
+<script src="/static/semantic/dist/semantic.min.js"></script>
+<script src="https://cdn.quilljs.com/1.3.6/quill.js"></script>
+
+
+{% if link_js %}
+  <script src={{ link_js }}></script> {% endif %}
+
+  <script>
+    function translate(sourceElem, destElem, sourceLang, destLang) {
+        $(destElem).html('<img src="{{ url_for('static', filename='loading.gif') }}">');
+        $.post('/translate', {
+            text: $(sourceElem).text(),
+            source_language: sourceLang,
+            dest_language: destLang
+        }).done(function(response) {
+            $(destElem).text(response['text'])
+        }).fail(function() {
+            $(destElem).text("{{ _('Error: Could not contact server.') }}");
+        });
+    }
+    $(function () {
+        var timer = null;
+        var xhr = null;
+        $('.user_popup').hover(
+            function(event) {
+                // mouse in event handler
+                var elem = $(event.currentTarget);
+                timer = setTimeout(function() {
+                    timer = null;
+                    xhr = $.ajax(
+                        '/user/' + elem.first().text().trim() + '/popup').done(
+                            function(data) {
+                                xhr = null;
+                                elem.popover({
+                                    trigger: 'manual',
+                                    html: true,
+                                    animation: false,
+                                    container: elem,
+                                    content: data
+                                }).popover('show');
+                                flask_moment_render_all();
+                            }
+                        );
+                }, 1000);
+            },
+            function(event) {
+                // mouse out event handler
+                var elem = $(event.currentTarget);
+                if (timer) {
+                    clearTimeout(timer);
+                    timer = null;
+                }
+                else if (xhr) {
+                    xhr.abort();
+                    xhr = null;
+                }
+                else {
+                    elem.popover('destroy');
+                }
+            }
+        );
+    });
+    function set_message_count(n) {
+        $('#message_count').text(n);
+        $('#message_count').css('visibility', n ? 'visible' : 'hidden');
+    }
+    function set_task_progress(task_id, progress) {
+        $('#' + task_id + '-progress').text(progress);
+    }
+    {% if current_user.is_authenticated %}
+    $(function() {
+        var since = 0;
+        setInterval(function() {
+            $.ajax('{{ url_for('main.notifications') }}?since=' + since).done(
+                function(notifications) {
+                    for (var i = 0; i < notifications.length; i++) {
+                        switch (notifications[i].name) {
+                            case 'unread_message_count':
+                                set_message_count(notifications[i].data);
+                                break;
+                            case 'task_progress':
+                                set_task_progress(notifications[i].data.task_id,
+                                    notifications[i].data.progress);
+                                break;
+                        }
+                        since = notifications[i].timestamp;
+                    }
+                }
+            );
+        }, 10000);
+    });
+    {% endif %}
+</script>
 {% endblock %}
 
 {% block content %}
     <div class="container">
-        {% if current_user.is_authenticated %}
-        {% with tasks = current_user.get_tasks_in_progress() %}
-        {% if tasks %}
-            {% for task in tasks %}
-            <div class="alert alert-success" role="alert">
-                {{ task.description }}
-                <span id="{{ task.id }}-progress">{{ task.get_progress() }}</span>%
-            </div>
-            {% endfor %}
-        {% endif %}
-        {% endwith %}
-        {% endif %}
         {% with messages = get_flashed_messages() %}
         {% if messages %}
             {% for message in messages %}
@@ -76,96 +149,39 @@
         {# application content needs to be provided in the app_content block #}
         {% block app_content %}{% endblock %}
     </div>
-{% endblock %}
+{%- block footer %}
+<footer class="ui inverted vertical footer segment">
+    <div class="ui container">
+      <div class="ui stackable inverted divided equal height stackable grid">
+        <div class="three wide column">
+          <h4 class="ui inverted header">Về chúng tôi</h4>
+          <div class="ui inverted link list">
+            <a href="#" class="item">Sitemap</a>
+            <a href="#" class="item">Liên hệ</a>
+          </div>
+        </div>
+        <div class="three wide column">
+          <h4 class="ui inverted header">Dịch vụ</h4>
+          <div class="ui inverted link list">
+            <a href="#" class="item">How-to</a>
+            <a href="#" class="item">Nguồn tham khảo</a>
+            <a href="#" class="item">Quyền sử dụng</a>
+            <a href="#" class="item">Blog</a>
+          </div>
+        </div>
+        <div class="seven wide column">
+          <h4 class="ui inverted header">Lê sơ tản văn</h4>
+          <p>Đây là nơi trình bày những gì mà chúng tôi tìm kiếm được vào thời Lê sơ.</p>
+          <p>Nội dung được tổng hợp bởi
+            <a href="#">Trần Thị Kim Trang</a>
+          </p>
+          <p>Trang web được thiết lập bởi
+            <a href="https://github.com/Ihsara">Trần Long Châu</a>
 
-{% block scripts %}
-    {{ super() }}
-    {{ moment.include_moment() }}
-    {{ moment.lang(g.locale) }}
-    <script>
-        function translate(sourceElem, destElem, sourceLang, destLang) {
-            $(destElem).html('<img src="{{ url_for('static', filename='loading.gif') }}">');
-            $.post('/translate', {
-                text: $(sourceElem).text(),
-                source_language: sourceLang,
-                dest_language: destLang
-            }).done(function(response) {
-                $(destElem).text(response['text'])
-            }).fail(function() {
-                $(destElem).text("{{ _('Error: Could not contact server.') }}");
-            });
-        }
-        $(function () {
-            var timer = null;
-            var xhr = null;
-            $('.user_popup').hover(
-                function(event) {
-                    // mouse in event handler
-                    var elem = $(event.currentTarget);
-                    timer = setTimeout(function() {
-                        timer = null;
-                        xhr = $.ajax(
-                            '/user/' + elem.first().text().trim() + '/popup').done(
-                                function(data) {
-                                    xhr = null;
-                                    elem.popover({
-                                        trigger: 'manual',
-                                        html: true,
-                                        animation: false,
-                                        container: elem,
-                                        content: data
-                                    }).popover('show');
-                                    flask_moment_render_all();
-                                }
-                            );
-                    }, 1000);
-                },
-                function(event) {
-                    // mouse out event handler
-                    var elem = $(event.currentTarget);
-                    if (timer) {
-                        clearTimeout(timer);
-                        timer = null;
-                    }
-                    else if (xhr) {
-                        xhr.abort();
-                        xhr = null;
-                    }
-                    else {
-                        elem.popover('destroy');
-                    }
-                }
-            );
-        });
-        function set_message_count(n) {
-            $('#message_count').text(n);
-            $('#message_count').css('visibility', n ? 'visible' : 'hidden');
-        }
-        function set_task_progress(task_id, progress) {
-            $('#' + task_id + '-progress').text(progress);
-        }
-        {% if current_user.is_authenticated %}
-        $(function() {
-            var since = 0;
-            setInterval(function() {
-                $.ajax('{{ url_for('main.notifications') }}?since=' + since).done(
-                    function(notifications) {
-                        for (var i = 0; i < notifications.length; i++) {
-                            switch (notifications[i].name) {
-                                case 'unread_message_count':
-                                    set_message_count(notifications[i].data);
-                                    break;
-                                case 'task_progress':
-                                    set_task_progress(notifications[i].data.task_id,
-                                        notifications[i].data.progress);
-                                    break;
-                            }
-                            since = notifications[i].timestamp;
-                        }
-                    }
-                );
-            }, 10000);
-        });
-        {% endif %}
-    </script>
+          </p>
+        </div>
+      </div>
+    </div>
+</footer>
+{%- endblock footer %}
 {% endblock %}

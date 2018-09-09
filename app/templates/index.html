@@ -3,6 +3,8 @@
 
 {% block app_content %}
     <h1>{{ _('Hi, %(username)s!', username=current_user.username) }}</h1>
+    <h1 class='test_carto' style="color:#F76C6C;">{{ 'Leâ sô taûn vaên' }}</h1>
+    <button class="ui teal button">Teal</button>
     {% if form %}
     {{ wtf.quick_form(form) }}
     <br>
