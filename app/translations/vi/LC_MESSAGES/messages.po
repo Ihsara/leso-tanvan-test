@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2018-09-09 03:50+0300\n"
+"POT-Creation-Date: 2018-09-10 05:31+0300\n"
 "PO-Revision-Date: 2018-09-09 03:51+0300\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: vi\n"
@@ -119,11 +119,11 @@ msgstr ""
 msgid "Your post is now live!"
 msgstr ""
 
-#: app/main/routes.py:45 app/templates/base.html:21
+#: app/main/routes.py:45
 msgid "Home"
 msgstr ""
 
-#: app/main/routes.py:60 app/templates/base.html:22
+#: app/main/routes.py:60
 msgid "Explore"
 msgstr ""
 
@@ -183,41 +183,75 @@ msgstr ""
 msgid "Translate"
 msgstr ""
 
-#: app/templates/base.html:4
-msgid "Welcome to Microblog"
-msgstr ""
-
-#: app/templates/base.html:33
-msgid "Login"
-msgstr ""
-
-#: app/templates/base.html:36 app/templates/messages.html:4
-msgid "Messages"
-msgstr ""
-
-#: app/templates/base.html:45
-msgid "Profile"
-msgstr ""
-
-#: app/templates/base.html:46
-msgid "Logout"
-msgstr ""
-
-#: app/templates/base.html:95
+#: app/templates/base.html:51
 msgid "Error: Could not contact server."
 msgstr ""
 
-#: app/templates/index.html:5
-#, python-format
-msgid "Hi, %(username)s!"
+#: app/templates/base.html:147
+msgid "Về chúng tôi"
 msgstr ""
 
-#: app/templates/index.html:17 app/templates/user.html:37
-msgid "Newer posts"
+#: app/templates/base.html:149
+msgid "Sitemap"
 msgstr ""
 
-#: app/templates/index.html:22 app/templates/user.html:42
-msgid "Older posts"
+#: app/templates/index.html:11
+msgid "Đăng nhập"
+msgstr ""
+
+#: app/templates/index.html:14
+msgid "Cập nhật"
+msgstr ""
+
+#: app/templates/index.html:16
+msgid ""
+"Trang\n"
+"                        cá\n"
+"                        nhân"
+msgstr ""
+
+#: app/templates/index.html:19
+msgid "Đăng xuất"
+msgstr ""
+
+#: app/templates/index.html:26
+msgid "Leâ sô taûn vaên"
+msgstr ""
+
+#: app/templates/index.html:34
+msgid "Taûn vaên"
+msgstr ""
+
+#: app/templates/index.html:37
+msgid "Nhöõng taäp truyeän veà thôøi Leâ sô"
+msgstr ""
+
+#: app/templates/index.html:41
+msgid "Doøng thôøi gian"
+msgstr ""
+
+#: app/templates/index.html:44
+msgid "Doøng thôøi gian trieàu Leâ sô"
+msgstr ""
+
+#: app/templates/index.html:48
+msgid "Trieàu ñình Leâ sô"
+msgstr ""
+
+#: app/templates/index.html:51
+msgid "Thoâng tin veà trieàu ñình Leâ sô"
+msgstr ""
+
+#: app/templates/index.html:57
+msgid "Nhaân vaät tieâu bieåu"
+msgstr ""
+
+#: app/templates/index.html:60
+msgid "Caùc nhaân vaät tieâu bieâu thôøi Leâ sô"
+msgstr ""
+
+#: app/templates/messages.html:4
+msgid "Messages"
 msgstr ""
 
 #: app/templates/messages.html:12
@@ -283,6 +317,14 @@ msgstr ""
 msgid "Send private message"
 msgstr ""
 
+#: app/templates/user.html:37
+msgid "Newer posts"
+msgstr ""
+
+#: app/templates/user.html:42
+msgid "Older posts"
+msgstr ""
+
 #: app/templates/auth/login.html:12
 msgid "New User?"
 msgstr ""
@@ -318,4 +360,19 @@ msgstr ""
 #: app/templates/errors/500.html:5
 msgid "The administrator has been notified. Sorry for the inconvenience!"
 msgstr ""
+
+#~ msgid "Welcome to Microblog"
+#~ msgstr ""
+
+#~ msgid "Login"
+#~ msgstr ""
+
+#~ msgid "Profile"
+#~ msgstr ""
+
+#~ msgid "Logout"
+#~ msgstr ""
+
+#~ msgid "Hi, %(username)s!"
+#~ msgstr ""
 

@@ -2,6 +2,11 @@
 	font-family: 'ThuPhap1';
 	src: url('../../font/thuphap-long.TTF');
     }
+
+@font-face {
+    font-family: 'ThuPhapHeaderSmall';
+    src: url('../../font/Vntfap01.TTF')
+}
 body {
     font-size: 100%;
     background-color:#A8D0E6;
@@ -12,47 +17,52 @@ body {
     padding: 1em 0em;
 }
 
-.ui.fluid.card {
-    background-color: #374785;
-}
-
-.ui.fluid.card .content a.header{
-    font-size: 3em !important;
-    color:  #F8E9A1;
-    text-align: center;
-}
-
-.ui.fluid.card .content a:hover{
-    color: #F76C6C;
-    text-decoration: none;
-}
-
-.ui.fluid.card .content .description {
-    font-size: 2em;
-    text-align: center;
-    color: white;
-    padding: 1em 1em 1em 1em;
-}
-
 /* h1:first-child{
     margin-top: 3em;
 } */
 
 .masthead .ui.container .main.menu{
     background:#A8D0E6;
+    border-style: none!important;
+    box-shadow: none;
+}
+
+.masthead .ui.container .main.menu .ui.container {
+    background:#A8D0E6;
+    border-style: none!important;
+    box-shadow: none;
 }
 
 .masthead .ui.container h1.ui.header {
-    margin-top: 3em;
+    margin-top: 1em;
     font-family: "ThuPhap1";
     font-size: 10em;
 }
 
-.mastmenu{
-    margin-bottom: 1em;
+.mast_topics {
+    margin-bottom: 1rem;
 }
 
-/* .test_carto {
-    font-family: "ThuPhap1";
-    font-size: 10em;
-} */
+.mast_topics .column {
+    margin-bottom: 3rem;
+    border-style: none!important;
+    box-shadow: none;
+}
+
+.mast_topics .column .ui.segment a {
+    font-size: 4em !important;
+    font-family: "ThuPhapHeaderSmall";
+    color: #F76C6C ;
+    text-align: center;
+}
+
+.mast_topics .column .ui.segment a:hover{
+    color: #F8E9A1 !important;
+    text-decoration: none;
+}
+
+.mast_topics .column .ui.segment {
+    background-color: #A8D0E6;
+    border-style: none!important;
+    box-shadow: none;
+}

@@ -12,9 +12,10 @@
                     {% else %}
 
                     <a href="{{ url_for('main.explore') }}" class="ui inverted purple button">{{ _('Cập nhật') }}</a>
-                    <a href="{{ url_for('main.user', username=current_user.username) }}" class="ui inverted green button">{{ _('Trang
-                            cá
-                            nhân') }}</a>
+                    <a href="{{ url_for('main.user', username=current_user.username) }}" class="ui inverted green button">{{
+                        _('Trang
+                        cá
+                        nhân') }}</a>
                     <a href="{{ url_for('auth.logout') }}" class="ui inverted red button">{{ _('Đăng xuất') }}</a>
                     {% endif %}
                 </div>
@@ -27,45 +28,18 @@
 
 </div>
 
-<div class="ui vertical stripe mastmenu four stackable cards" style="border: none;">
-    <div class="ui fluid card">
-        <div class="content">
-            <a class="header">{{ _('Tản văn') }}</a>
-            <div class="description">
-                <p>Những tập truyện hay câu chuyện về thời Lê sơ</p>
-            </div>
-        </div>
-
+<div class="ui mast_topics two column stackable grid container">
+    <div class="column">
+        <div class="ui segment"><a href="#">{{ _('Taûn vaên')}}</a></div>
     </div>
-
-    <div class="ui fluid card">
-        <div class="content">
-            <a class="header">{{ _('Dòng thời gian') }}</a>
-            <div class="description">
-                <p>Dòng thời gian triều Lê sơ</p>
-            </div>
-        </div>
-
+    <div class="column">
+        <div class="ui segment"><a href="#">{{ _('Doøng thôøi gian') }}</a></div>
     </div>
-
-    <div class="ui fluid card">
-        <div class="content">
-            <a class="header">{{ _('Triều đình Lê sơ') }}</a>
-            <div class="description">
-                <p>Thông tin về triều đình thời Lê sơ</p>
-            </div>
-        </div>
-
+    <div class="column">
+        <div class="ui segment"><a href="#">{{ _('Trieàu ñình Leâ sô') }}</a></div>
     </div>
-
-    <div class="ui fluid card">
-        <div class="content">
-            <a class="header">{{ _('Nhân vật tiêu biểu') }}</a>
-            <div class="description">
-                <p>Các nhân vật tiêu biểu thời Lê sơ</p>
-            </div>
-        </div>
-
+    <div class="column">
+        <div class="ui segment"><a href="#">{{ _('Nhaân vaät tieâu bieåu') }}</a></div>
     </div>
 </div>
 {% endblock %}
