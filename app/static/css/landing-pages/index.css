@@ -24,6 +24,7 @@ body {
 
 .ui.fluid.card .content a:hover{
     color: #F76C6C;
+    text-decoration: none;
 }
 
 .ui.fluid.card .content .description {
