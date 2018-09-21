@@ -3,25 +3,36 @@
 
 {% block app_content %}
 <div class="ui vertical masthead center aligned">
-    <div class="ui container">
-        <div class="ui fixed large main menu" style="display: flex !important;">
-            <div class="ui container">
-                <div class="right item">
-                    {% if current_user.is_anonymous %}
-                    <a href="{{ url_for('auth.login') }}" class="ui inverted blue button">{{ _('Đăng nhập') }}</a>
-                    {% else %}
 
-                    <a href="{{ url_for('main.explore') }}" class="ui inverted purple button">{{ _('Cập nhật') }}</a>
-                    <a href="{{ url_for('main.user', username=current_user.username) }}" class="ui inverted green button">{{
-                        _('Trang
-                        cá
-                        nhân') }}</a>
-                    <a href="{{ url_for('auth.logout') }}" class="ui inverted red button">{{ _('Đăng xuất') }}</a>
-                    {% endif %}
-                </div>
+    <div class="ui light red button dropdown right aligned"><i class="white sidebar icon"></i>
+        <div class=" menu">
+            <div class="ui search icon input">
+                <i class="search icon"></i>
+                <input type="text" name="search" placeholder="Tìm bài đăng...">
             </div>
+            <div class="divider"></div>
+
+            {% if current_user.is_anonymous %}
+            <div class="header">
+                <i class="person icon"></i>
+                Chào bạn!
+            </div>
+            <div class="item"> <a href="{{ url_for('auth.login') }}">{{ _('Đăng nhập') }}</a></div>
+
+            {% else %}
+            <div class="header">
+                    <i class="person icon"></i>
+                    Chào {{ current_user.username }}!
+                </div>
+            <div class="item"> <a href="{{ url_for('main.user', username=current_user.username) }}">{{ _('Trang cá nhân') }}</a></div>
+            <div class="item"> <a href="{{ url_for('main.explore') }}">{{ _('Cập nhật') }}</a></div>
+            <!-- <div class="item" data-value="fade up">Đăng bài</div> -->
+            <div class="item"> <a href="{{ url_for('auth.logout') }}">{{ _('Đăng xuất') }}</a></div>
+
+            {% endif%}
         </div>
     </div>
+
     <div class="ui container">
         <h1 class='ui header test_carto' style="color:black; text-align: center;">{{ _('Leâ sô taûn vaên') }}</h1>
     </div>

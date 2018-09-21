@@ -54,6 +54,9 @@ body {
     font-family: "ThuPhapHeaderSmall";
     color: black ;
     text-align: center;
+    min-height: 5em;
+    min-width:  3em;
+    line-height: 1.25em;
 }
 
 .mast_topics .column .ui.segment a:hover{
