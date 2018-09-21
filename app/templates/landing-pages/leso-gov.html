@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+{% import 'bootstrap/wtf.html' as wtf %}
+
+{% block app_content %}
+<div class="ui vertical masthead center aligned">
+
+        <div class="ui light red button dropdown right aligned"><i class="white sidebar icon"></i>
+            <div class=" menu">
+                <div class="ui search icon input">
+                    <i class="search icon"></i>
+                    <input type="text" name="search" placeholder="Tìm bài đăng...">
+                </div>
+                <div class="divider"></div>
+
+                {% if current_user.is_anonymous %}
+                <div class="header">
+                    <i class="person icon"></i>
+                    Chào bạn!
+                </div>
+                <div class="item"> <a href="{{ url_for('auth.login') }}">{{ _('Đăng nhập') }}</a></div>
+
+                {% else %}
+                <div class="header">
+                        <i class="person icon"></i>
+                        Chào {{ current_user.username }}!
+                    </div>
+                <div class="item"> <a href="{{ url_for('main.user', username=current_user.username) }}">{{ _('Trang cá nhân') }}</a></div>
+                <div class="item"> <a href="{{ url_for('main.explore') }}">{{ _('Cập nhật') }}</a></div>
+                <!-- <div class="item" data-value="fade up">Đăng bài</div> -->
+                <div class="item"> <a href="{{ url_for('auth.logout') }}">{{ _('Đăng xuất') }}</a></div>
+
+                {% endif%}
+            </div>
+        </div>
+
+        <div class="ui container">
+            <h1 class='ui header test_carto' style="color:black; text-align: center;">{{ _('Trieàu ñình Leâ sô') }}</h1>
+        </div>
+
+    </div>
+{% endblock %}

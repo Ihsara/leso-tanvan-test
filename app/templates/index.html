@@ -41,16 +41,16 @@
 
 <div class="ui mast_topics two column stackable grid container">
     <div class="column">
-        <div class="ui segment"><a href="#">{{ _('Taûn vaên')}}</a></div>
+        <div class="ui segment"><a href="{{ url_for('main.tan_van') }}">{{ _('Taûn vaên')}}</a></div>
     </div>
     <div class="column">
-        <div class="ui segment"><a href="#">{{ _('Doøng thôøi gian') }}</a></div>
+        <div class="ui segment"><a href="{{ url_for('main.timeline') }}">{{ _('Doøng thôøi gian') }}</a></div>
     </div>
     <div class="column">
-        <div class="ui segment"><a href="#">{{ _('Trieàu ñình Leâ sô') }}</a></div>
+        <div class="ui segment"><a href="{{ url_for('main.leso_gov') }}">{{ _('Trieàu ñình Leâ sô') }}</a></div>
     </div>
     <div class="column">
-        <div class="ui segment"><a href="#">{{ _('Nhaân vaät tieâu bieåu') }}</a></div>
+        <div class="ui segment"><a href="{{ url_for('main.notable_characters') }}">{{ _('Nhaân vaät tieâu bieåu') }}</a></div>
     </div>
 </div>
 {% endblock %}

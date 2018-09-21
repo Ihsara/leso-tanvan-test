@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2018-09-10 05:31+0300\n"
+"POT-Creation-Date: 2018-09-22 01:42+0300\n"
 "PO-Revision-Date: 2018-09-09 03:51+0300\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: vi\n"
@@ -107,7 +107,7 @@ msgstr ""
 msgid "Say something"
 msgstr ""
 
-#: app/main/forms.py:32 app/main/routes.py:156
+#: app/main/forms.py:32 app/main/routes.py:138
 msgid "Search"
 msgstr ""
 
@@ -115,62 +115,58 @@ msgstr ""
 msgid "Message"
 msgstr ""
 
-#: app/main/routes.py:36
-msgid "Your post is now live!"
-msgstr ""
-
-#: app/main/routes.py:45
+#: app/main/routes.py:27
 msgid "Home"
 msgstr ""
 
-#: app/main/routes.py:60
+#: app/main/routes.py:42
 msgid "Explore"
 msgstr ""
 
-#: app/main/routes.py:95
+#: app/main/routes.py:77
 msgid "Your changes have been saved."
 msgstr ""
 
-#: app/main/routes.py:100 app/templates/edit_profile.html:5
+#: app/main/routes.py:82 app/templates/edit_profile.html:5
 msgid "Edit Profile"
 msgstr ""
 
-#: app/main/routes.py:109 app/main/routes.py:125
+#: app/main/routes.py:91 app/main/routes.py:107
 #, python-format
 msgid "User %(username)s not found."
 msgstr ""
 
-#: app/main/routes.py:112
+#: app/main/routes.py:94
 msgid "You cannot follow yourself!"
 msgstr ""
 
-#: app/main/routes.py:116
+#: app/main/routes.py:98
 #, python-format
 msgid "You are following %(username)s!"
 msgstr ""
 
-#: app/main/routes.py:128
+#: app/main/routes.py:110
 msgid "You cannot unfollow yourself!"
 msgstr ""
 
-#: app/main/routes.py:132
+#: app/main/routes.py:114
 #, python-format
 msgid "You are not following %(username)s."
 msgstr ""
 
-#: app/main/routes.py:171
+#: app/main/routes.py:153
 msgid "Your message has been sent."
 msgstr ""
 
-#: app/main/routes.py:173
+#: app/main/routes.py:155
 msgid "Send Message"
 msgstr ""
 
-#: app/main/routes.py:199
+#: app/main/routes.py:181
 msgid "An export task is currently in progress"
 msgstr ""
 
-#: app/main/routes.py:201
+#: app/main/routes.py:183
 msgid "Exporting posts..."
 msgstr ""
 
@@ -195,59 +191,53 @@ msgstr ""
 msgid "Sitemap"
 msgstr ""
 
-#: app/templates/index.html:11
+#: app/templates/index.html:20 app/templates/landing-pages/leso-gov.html:20
+#: app/templates/landing-pages/notable-charaters.html:20
+#: app/templates/landing-pages/tan-van.html:20
+#: app/templates/landing-pages/timeline.html:20
 msgid "Đăng nhập"
 msgstr ""
 
-#: app/templates/index.html:14
+#: app/templates/index.html:27 app/templates/landing-pages/leso-gov.html:27
+#: app/templates/landing-pages/notable-charaters.html:27
+#: app/templates/landing-pages/tan-van.html:27
+#: app/templates/landing-pages/timeline.html:27
+msgid "Trang cá nhân"
+msgstr ""
+
+#: app/templates/index.html:28 app/templates/landing-pages/leso-gov.html:28
+#: app/templates/landing-pages/notable-charaters.html:28
+#: app/templates/landing-pages/tan-van.html:28
+#: app/templates/landing-pages/timeline.html:28
 msgid "Cập nhật"
 msgstr ""
 
-#: app/templates/index.html:16
-msgid ""
-"Trang\n"
-"                        cá\n"
-"                        nhân"
-msgstr ""
-
-#: app/templates/index.html:19
+#: app/templates/index.html:30 app/templates/landing-pages/leso-gov.html:30
+#: app/templates/landing-pages/notable-charaters.html:30
+#: app/templates/landing-pages/tan-van.html:30
+#: app/templates/landing-pages/timeline.html:30
 msgid "Đăng xuất"
 msgstr ""
 
-#: app/templates/index.html:26
+#: app/templates/index.html:37
 msgid "Leâ sô taûn vaên"
 msgstr ""
 
-#: app/templates/index.html:34
+#: app/templates/index.html:44 app/templates/landing-pages/tan-van.html:37
 msgid "Taûn vaên"
 msgstr ""
 
-#: app/templates/index.html:37
-msgid "Nhöõng taäp truyeän veà thôøi Leâ sô"
-msgstr ""
-
-#: app/templates/index.html:41
+#: app/templates/index.html:47 app/templates/landing-pages/timeline.html:37
 msgid "Doøng thôøi gian"
 msgstr ""
 
-#: app/templates/index.html:44
-msgid "Doøng thôøi gian trieàu Leâ sô"
-msgstr ""
-
-#: app/templates/index.html:48
+#: app/templates/index.html:50 app/templates/landing-pages/leso-gov.html:37
 msgid "Trieàu ñình Leâ sô"
 msgstr ""
 
-#: app/templates/index.html:51
-msgid "Thoâng tin veà trieàu ñình Leâ sô"
-msgstr ""
-
-#: app/templates/index.html:57
+#: app/templates/index.html:53
+#: app/templates/landing-pages/notable-charaters.html:37
 msgid "Nhaân vaät tieâu bieåu"
-msgstr ""
-
-#: app/templates/index.html:60
-msgid "Caùc nhaân vaät tieâu bieâu thôøi Leâ sô"
 msgstr ""
 
 #: app/templates/messages.html:4
@@ -374,5 +364,26 @@ msgstr ""
 #~ msgstr ""
 
 #~ msgid "Hi, %(username)s!"
+#~ msgstr ""
+
+#~ msgid "Your post is now live!"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Trang\n"
+#~ "                        cá\n"
+#~ "                        nhân"
+#~ msgstr ""
+
+#~ msgid "Nhöõng taäp truyeän veà thôøi Leâ sô"
+#~ msgstr ""
+
+#~ msgid "Doøng thôøi gian trieàu Leâ sô"
+#~ msgstr ""
+
+#~ msgid "Thoâng tin veà trieàu ñình Leâ sô"
+#~ msgstr ""
+
+#~ msgid "Caùc nhaân vaät tieâu bieâu thôøi Leâ sô"
 #~ msgstr ""
 

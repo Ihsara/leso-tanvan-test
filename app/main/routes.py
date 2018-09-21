@@ -196,3 +196,32 @@ def notifications():
         'data': n.get_data(),
         'timestamp': n.timestamp
     } for n in notifications])
+
+@bp.route('/landing-pages/leso-gov', methods=['GET', 'POST'])
+# @login_required
+def leso_gov():
+    return render_template('/landing-pages/leso-gov.html', title=_('Triều đình Lê sơ'),
+                           link_css='/static/css/landing-pages/index.css',
+                           link_js='/static/js/landing-pages/index.js')
+
+@bp.route('/landing-pages/notable-characters', methods=['GET', 'POST'])
+# @login_required
+def notable_characters():
+    return render_template('/landing-pages/notable_characters.html', title=_('Nhân vật tiêu biểu'),
+                           link_css='/static/css/landing-pages/index.css',
+                           link_js='/static/js/landing-pages/index.js')
+
+@bp.route('/landing-pages/tan-van', methods=['GET', 'POST'])
+# @login_required
+def tan_van():
+    return render_template('/landing-pages/tan-van.html', title=_('Tản văn'),
+                           link_css='/static/css/landing-pages/index.css',
+                           link_js='/static/js/landing-pages/index.js')
+
+@bp.route('/landing-pages/timeline', methods=['GET', 'POST'])
+# @login_required
+def timeline():
+    return render_template('/landing-pages/timeline.html', title=_('Dòng thời gian'),
+                           link_css='/static/css/landing-pages/index.css',
+                           link_js='/static/js/landing-pages/index.js')
+
