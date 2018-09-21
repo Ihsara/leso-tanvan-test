@@ -9,8 +9,8 @@
 }
 body {
     font-size: 100%;
-    background-color:#A8D0E6;
-    color: white;
+    background-color:#F8E9A1;
+    color: black;
 }
 
 .ui.vertical.stripe {
@@ -22,19 +22,19 @@ body {
 } */
 
 .masthead .ui.container .main.menu{
-    background:#A8D0E6;
+    /* background:#F8E9A1; */
     border-style: none!important;
     box-shadow: none;
 }
 
 .masthead .ui.container .main.menu .ui.container {
-    background:#A8D0E6;
+    /* background:#F8E9A1; */
     border-style: none!important;
     box-shadow: none;
 }
 
 .masthead .ui.container h1.ui.header {
-    margin-top: 1em;
+    margin-top: 1.5em;
     font-family: "ThuPhap1";
     font-size: 10em;
 }
@@ -52,17 +52,17 @@ body {
 .mast_topics .column .ui.segment a {
     font-size: 4em !important;
     font-family: "ThuPhapHeaderSmall";
-    color: #F76C6C ;
+    color: black ;
     text-align: center;
 }
 
 .mast_topics .column .ui.segment a:hover{
-    color: #F8E9A1 !important;
+    color: #F76C6C !important;
     text-decoration: none;
 }
 
 .mast_topics .column .ui.segment {
-    background-color: #A8D0E6;
+    background-color: transparent;
     border-style: none!important;
     box-shadow: none;
 }

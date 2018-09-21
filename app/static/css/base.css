@@ -2,3 +2,7 @@
     margin-top: 3rem;
     margin-bottom: 3rem;
 }
+
+.base_footer .ui.grid .seven.wide.column a.author_name {
+    color:#F8E9A1;
+}
