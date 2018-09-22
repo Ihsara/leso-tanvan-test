@@ -70,3 +70,12 @@ body {
     box-shadow: none;
     text-align: center;
 }
+
+.masthead .ui.dropdown .mastmenu {
+    background-color: transparent;
+}
+
+.masthead .ui.dropdown .mastmenu .item a{
+    color: black;
+}
+
